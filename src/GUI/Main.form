@@ -41,7 +41,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="archivosVisuales.Dibujar" name="dibujar1">
+    <Container class="GUI.Dibujar" name="dibujar1">
 
       <Layout>
         <DimensionLayout dim="0">

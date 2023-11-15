@@ -4,7 +4,7 @@
  */
 package testing;
 
-import datos.SantaMarta;
+import datos.Ciudad;
 
 /**
  *
@@ -13,7 +13,7 @@ import datos.SantaMarta;
 public class test {
     
     public static void main(String[] args) {
-        SantaMarta c = new SantaMarta();
+        Ciudad c = new Ciudad();
         
     }
 }

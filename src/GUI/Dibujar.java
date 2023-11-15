@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import datos.Ambulancia;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;

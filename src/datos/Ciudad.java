@@ -11,11 +11,11 @@ import ednl.GrafoEstMat;
  *
  * @author edavi
  */
-public class SantaMarta {
+public class Ciudad {
     
     Grafo<Barrio, Integer> c;
 
-    public SantaMarta() {
+    public Ciudad() {
         this.c = new GrafoEstMat<>(99999);
     }
     

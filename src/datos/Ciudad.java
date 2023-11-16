@@ -24,12 +24,34 @@ public class Ciudad {
         this.nAmbulancias = nAmbulancias;
         this.nBarrios = nBarrios;
         
+        //coloca los vertices
         int radius = 300;
         for (int i = 0; i < nBarrios; i++) {
             double angle = 2 * Math.PI * i / nBarrios;
             int x = (int) (radius * Math.cos(angle));
             int y = (int) (radius * Math.sin(angle));
             c.insVertice(new Barrio(x, y));
+        }
+        // Coloca las aristas
+        ArrayList<Barrio> barrios = obtenerBarrios();
+        for (int i = 0; i < nBarrios; i++) {
+            Barrio barrio = barrios.get(i);
+            
+            Random random = new Random();
+            boolean asignar;
+            for (int j = i + 1; j < nBarrios; j++) {
+                asignar = random.nextBoolean();
+                if (asignar) {
+                    Barrio otroBarrio = barrios.get(j);
+
+                    // Calcula la distancia euclidiana entre los barrios
+                    double distancia = Math.sqrt(Math.pow(otroBarrio.getX() - barrio.getX(), 2) +
+                            Math.pow(otroBarrio.getY() - barrio.getY(), 2));
+
+                    c.insArista(i, j, distancia);
+                }
+            }
+            
         }
         situarAmbulancias(nAmbulancias);
     }

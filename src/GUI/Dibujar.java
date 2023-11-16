@@ -18,7 +18,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.ImageIcon;
 
 /**
@@ -36,9 +35,6 @@ public class Dibujar extends JPanel implements ActionListener{
     private Image imagenA;
     private String barrio = "../GUI/Barrio.jpg";
     private Image imagenB;
-    
-    
-    boolean primeraVez = true;
     
     public Dibujar() {
         setBackground(Color.WHITE);
@@ -77,41 +73,19 @@ public class Dibujar extends JPanel implements ActionListener{
             g2.setColor(Color.BLACK);
             g2.drawString(Integer.toString(i + 1), barrio.getX() + centerX, barrio.getY() + centerY);
 
-            // Dibuja las conexiones con los demás barrios
-            if (primeraVez) {
-                Random random = new Random();
-                boolean asignar;
-                for (int j = i + 1; j < santaMarta.getnBarrios(); j++) {
-                    asignar = random.nextBoolean();
-                    if (asignar) {
-                        Barrio otroBarrio = barrios.get(j);
-
-                        // Calcula la distancia euclidiana entre los barrios
-                        double distancia = Math.sqrt(Math.pow(otroBarrio.getX() - barrio.getX(), 2) +
-                                Math.pow(otroBarrio.getY() - barrio.getY(), 2));
-
-                        santaMarta.agregarDistancia(i, j, distancia);
-
-                        // Dibuja la línea entre los barrios
-                        g2.setColor(Color.BLUE);
-                        g2.drawLine(barrio.getX() + centerX, barrio.getY() + centerY,
-                                otroBarrio.getX() + centerX, otroBarrio.getY() + centerY);
-                    }
-                }
-            } else {
-                for (int j = i + 1; j < santaMarta.getnBarrios(); j++) {
-                    Barrio otroBarrio = barrios.get(j);
-
-                    // Calcula la distancia euclidiana entre los barrios
-                    double distancia = santaMarta.obtenerDistancia(i, j);
-                    if(distancia != santaMarta.noHayCamino(i, j)){
-                        // Dibuja la línea entre los barrios
-                        g2.setColor(Color.BLUE);
-                        g2.drawLine(barrio.getX() + centerX, barrio.getY() + centerY,
-                                otroBarrio.getX() + centerX, otroBarrio.getY() + centerY);
-                    }     
-                }
+            
+            for (int j = i + 1; j < santaMarta.getnBarrios(); j++) {
+                Barrio otroBarrio = barrios.get(j);
+                double distancia = santaMarta.obtenerDistancia(i, j);
+                
+                if(distancia != santaMarta.noHayCamino(i, j)){
+                    // Dibuja la línea entre los barrios
+                    g2.setColor(Color.BLUE);
+                    g2.drawLine(barrio.getX() + centerX, barrio.getY() + centerY,
+                            otroBarrio.getX() + centerX, otroBarrio.getY() + centerY);
+                }     
             }
+            
         }
 
         // Dibujar ambulancia
@@ -119,7 +93,7 @@ public class Dibujar extends JPanel implements ActionListener{
             Ambulancia ambulancia = ambulancias.get(i);
             g2.drawImage(imagenA, ambulancia.getX() + centerX, ambulancia.getY() + centerY, null);
         }
-        primeraVez = false;
+        
     }
 
     

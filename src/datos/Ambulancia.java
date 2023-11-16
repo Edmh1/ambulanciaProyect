@@ -4,10 +4,7 @@
  */
 package datos;
 
-import ednl.Grafo;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
 
 /**
  *

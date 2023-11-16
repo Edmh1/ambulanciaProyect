@@ -4,12 +4,14 @@
  */
 package datos;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author edavi
  */
-public class Barrio {
+public class Barrio implements Serializable{
     private String nombre;
     private Ambulancia ambulancia;
     private int nAccidentes;

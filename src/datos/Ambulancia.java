@@ -5,12 +5,13 @@
 package datos;
 
 import java.awt.event.KeyEvent;
+import java.io.Serializable;
 
 /**
  *
  * @author edavi
  */
-public class Ambulancia {
+public class Ambulancia implements Serializable{
     private int dx;
     private int dy;
     

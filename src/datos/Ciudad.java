@@ -6,6 +6,7 @@ package datos;
 
 import ednl.Grafo;
 import ednl.GrafoEstMat;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Random;
@@ -14,7 +15,7 @@ import java.util.Random;
  *
  * @author edavi
  */
-public class Ciudad {
+public class Ciudad implements Serializable{
     private Grafo<Barrio, Double> c;
     private int nBarrios;
     private int nAmbulancias;

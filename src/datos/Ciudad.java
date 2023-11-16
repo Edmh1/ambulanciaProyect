@@ -7,6 +7,7 @@ package datos;
 import ednl.Grafo;
 import ednl.GrafoEstMat;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Random;
 
 /**
@@ -14,10 +15,10 @@ import java.util.Random;
  * @author edavi
  */
 public class Ciudad {
-    
     private Grafo<Barrio, Double> c;
     private int nBarrios;
     private int nAmbulancias;
+    private Queue<Integer> colaPrioridad;
 
     public Ciudad(int nBarrios, int nAmbulancias) {
         this.c = new GrafoEstMat<>(99999.9);
@@ -36,12 +37,11 @@ public class Ciudad {
         ArrayList<Barrio> barrios = obtenerBarrios();
         for (int i = 0; i < nBarrios; i++) {
             Barrio barrio = barrios.get(i);
-            
-            Random random = new Random();
-            boolean asignar;
+           
+            int asignar;
             for (int j = i + 1; j < nBarrios; j++) {
-                asignar = random.nextBoolean();
-                if (asignar) {
+                asignar = (int) (Math.random()*100);
+                if (asignar < 20) {
                     Barrio otroBarrio = barrios.get(j);
 
                     // Calcula la distancia euclidiana entre los barrios
@@ -88,6 +88,10 @@ public class Ciudad {
     
     public double noHayCamino(int vi, int vf){
         return c.infinito();
+    }
+    
+    public void añadirEvento(int pos){
+        colaPrioridad.add(pos);
     }
     
     //Requerimiento funcionales
@@ -159,6 +163,13 @@ public class Ciudad {
      */
     public int getnAmbulancias() {
         return nAmbulancias;
+    }
+
+    /**
+     * @return the colaPrioridad
+     */
+    public Queue<Integer> getColaPrioridad() {
+        return colaPrioridad;
     }
 
     

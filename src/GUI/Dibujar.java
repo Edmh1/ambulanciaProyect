@@ -46,6 +46,7 @@ public class Dibujar extends JPanel implements ActionListener{
         ImageIcon imgB = new ImageIcon(this.getClass().getResource(barrio));
         imagenB = imgB.getImage().getScaledInstance(30, 30, 0);
          
+        //cargando datos
         santaMarta = new Ciudad(20, 5);
         barrios = santaMarta.obtenerBarrios();
         ambulancias = santaMarta.obtenerAmbulancias();
@@ -79,7 +80,7 @@ public class Dibujar extends JPanel implements ActionListener{
                 double distancia = santaMarta.obtenerDistancia(i, j);
                 
                 if(distancia != santaMarta.noHayCamino(i, j)){
-                    // Dibuja la línea entre los barrios
+                    // Dibujar los caminos entre los barrios
                     g2.setColor(Color.BLUE);
                     g2.drawLine(barrio.getX() + centerX, barrio.getY() + centerY,
                             otroBarrio.getX() + centerX, otroBarrio.getY() + centerY);

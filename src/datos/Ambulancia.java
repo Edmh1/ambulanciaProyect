@@ -4,6 +4,7 @@
  */
 package datos;
 
+import ednl.Grafo;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
@@ -32,6 +33,31 @@ public class Ambulancia {
     public void mover(){
         x += dx;
         y += dy;
+    }
+    
+    public void movimiento(Barrio vf){
+        //Barrio vi = g.obtVertice(vInicio);
+        //Barrio //vf = g.obtVertivFinal;
+        //int x0 = vi.getX(), y0 = vi.getY();
+        
+        int x = vf.getX(), y = vf.getY();
+        
+        if(getX() < x){
+            this.x++;
+            //dx = 1;
+        }else if(getX() > x){
+            this.x--;
+            //dx = -1;
+        }
+        if(getY() < y){
+            this.y++;
+            //dy = 1;
+        }else
+            if(getX() > y){
+            this.y--;
+            //dy = -1;
+        }
+        
     }
     
     public void keyReleased(KeyEvent e){

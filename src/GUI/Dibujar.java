@@ -108,15 +108,24 @@ public class Dibujar extends JPanel implements ActionListener{
         primeraVez = false;
     }
 
-
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!ambulancias.isEmpty()) {
+            Ambulancia a = ambulancias.get(1);
+            System.out.println(a.getX() + " " + a.getY());
+            
+            Barrio b = barrios.get(9);
             ambulancias.get(0).mover();
+            System.out.println(b.getX() + " posicion" + b.getY());
+            a.movimiento(b);
+//           }
+            System.out.println("destino");
             repaint();
+            
         }
     }
-
     private class Teclado extends KeyAdapter {
         @Override
         public void keyReleased(KeyEvent e) {

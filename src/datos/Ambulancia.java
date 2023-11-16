@@ -13,34 +13,25 @@ import javax.swing.ImageIcon;
  * @author edavi
  */
 public class Ambulancia {
-    
-    private String ambulancia = "../GUI/ambulancia.gif";
-    
     private int dx;
     private int dy;
+    
     private int x;
     private int y;
     
+    private String ambulancia = "../GUI/ambulancia.gif";
     private Image imagen;
     
-    public Ambulancia(){
-        x = 40;
-        y = 60;
+    public Ambulancia(int x, int y){
+        this.x = x;
+        this.y = y;
         ImageIcon img = new ImageIcon(this.getClass().getResource(ambulancia));
         imagen = img.getImage().getScaledInstance(20, 20, 0);
     }
+    
     public void mover(){
         x += dx;
         y += dy;
-    }
-    public int tenerX(){
-        return x;
-    }
-    public int tenerY(){
-        return y;
-    }
-    public Image tenerImagen(){
-        return imagen;
     }
     
     public void keyReleased(KeyEvent e){
@@ -64,21 +55,38 @@ public class Ambulancia {
         int key = e.getKeyCode();
 
         if(key == KeyEvent.VK_LEFT){
-            dx = -5;
+            dx = -3;
         }
         if(key == KeyEvent.VK_RIGHT){
-            dx = 5;
+            dx = 3;
         }
         if(key == KeyEvent.VK_UP){
-            dy = -5;
+            dy = -3;
         }
         if(key == KeyEvent.VK_DOWN){
-            dy = 5;
+            dy = 3;
         }
     }
 
-    
-    
-    
+     /**
+     * @return the x
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * @return the y
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public Image getImagen() {
+        return imagen;
+    }
     
 }

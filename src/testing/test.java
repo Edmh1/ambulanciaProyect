@@ -13,7 +13,7 @@ import datos.Ciudad;
 public class test {
     
     public static void main(String[] args) {
-        Ciudad c = new Ciudad();
+        
         
     }
 }

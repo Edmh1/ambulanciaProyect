@@ -24,7 +24,7 @@ public class Ciudad {
         this.nAmbulancias = nAmbulancias;
         this.nBarrios = nBarrios;
         
-        int radius = 220;
+        int radius = 300;
         for (int i = 0; i < nBarrios; i++) {
             double angle = 2 * Math.PI * i / nBarrios;
             int x = (int) (radius * Math.cos(angle));

@@ -36,7 +36,7 @@ public class Dibujar extends JPanel implements ActionListener{
         setBackground(Color.WHITE);
         setFocusable(true);
         
-        santaMarta = new Ciudad(10, 5);
+        santaMarta = new Ciudad(20, 5);
         barrios = santaMarta.obtenerBarrios();
         ambulancias = santaMarta.obtenerAmbulancias();
         
@@ -82,12 +82,6 @@ public class Dibujar extends JPanel implements ActionListener{
                         g2.setColor(Color.BLUE);
                         g2.drawLine(barrio.getX() + centerX, barrio.getY() + centerY,
                                 otroBarrio.getX() + centerX, otroBarrio.getY() + centerY);
-
-                        // Dibuja el valor de la arista
-                        g2.setColor(Color.RED);
-                        g2.drawString(String.format("%.2f", distancia),
-                                (barrio.getX() + otroBarrio.getX()) / 2 + centerX,
-                                (barrio.getY() + otroBarrio.getY()) / 2 + centerY);
                     }
                 }
             } else {
@@ -101,12 +95,6 @@ public class Dibujar extends JPanel implements ActionListener{
                         g2.setColor(Color.BLUE);
                         g2.drawLine(barrio.getX() + centerX, barrio.getY() + centerY,
                                 otroBarrio.getX() + centerX, otroBarrio.getY() + centerY);
-
-                        // Dibuja el valor de la arista
-                        g2.setColor(Color.RED);
-                        g2.drawString(String.format("%.2f", distancia),
-                                (barrio.getX() + otroBarrio.getX()) / 2 + centerX,
-                                (barrio.getY() + otroBarrio.getY()) / 2 + centerY);
                     }     
                 }
             }

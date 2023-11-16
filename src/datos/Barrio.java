@@ -19,14 +19,9 @@ public class Barrio {
     private int x;
     private int y;
     
-    private String barrio = "../GUI/Barrio.jpg";
-    private Image imagen;
-    
     public Barrio(int x, int y){
         this.x = x;
         this.y = y;
-        ImageIcon img = new ImageIcon(this.getClass().getResource(getBarrio()));
-        imagen = img.getImage().getScaledInstance(30, 30, 0);
     }
     
     public void asignarAmbulancia(Ambulancia ambulancia){
@@ -72,17 +67,4 @@ public class Barrio {
         return y;
     }
 
-    /**
-     * @return the barrio
-     */
-    public String getBarrio() {
-        return barrio;
-    }
-
-    /**
-     * @return the imagen
-     */
-    public Image getImagen() {
-        return imagen;
-    }
 }

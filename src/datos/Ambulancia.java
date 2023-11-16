@@ -20,14 +20,9 @@ public class Ambulancia {
     private int x;
     private int y;
     
-    private String ambulancia = "../GUI/ambulancia.gif";
-    private Image imagen;
-    
     public Ambulancia(int x, int y){
         this.x = x;
         this.y = y;
-        ImageIcon img = new ImageIcon(this.getClass().getResource(ambulancia));
-        imagen = img.getImage().getScaledInstance(20, 20, 0);
     }
     
     public void mover(){
@@ -106,13 +101,6 @@ public class Ambulancia {
      */
     public int getY() {
         return y;
-    }
-
-    /**
-     * @return the imagen
-     */
-    public Image getImagen() {
-        return imagen;
     }
     
 }

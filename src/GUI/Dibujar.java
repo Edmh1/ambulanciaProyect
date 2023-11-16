@@ -12,12 +12,14 @@ import javax.swing.Timer;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,12 +32,24 @@ public class Dibujar extends JPanel implements ActionListener{
     private ArrayList<Ambulancia> ambulancias;
     private Timer timer;
     
+    private String ambulancia = "../GUI/ambulancia.gif";
+    private Image imagenA;
+    private String barrio = "../GUI/Barrio.jpg";
+    private Image imagenB;
+    
+    
     boolean primeraVez = true;
     
     public Dibujar() {
         setBackground(Color.WHITE);
         setFocusable(true);
         
+        //imagenes
+        ImageIcon imgA = new ImageIcon(this.getClass().getResource(ambulancia));
+        imagenA = imgA.getImage().getScaledInstance(20, 20, 0);
+        ImageIcon imgB = new ImageIcon(this.getClass().getResource(barrio));
+        imagenB = imgB.getImage().getScaledInstance(30, 30, 0);
+         
         santaMarta = new Ciudad(20, 5);
         barrios = santaMarta.obtenerBarrios();
         ambulancias = santaMarta.obtenerAmbulancias();
@@ -58,7 +72,7 @@ public class Dibujar extends JPanel implements ActionListener{
         // Dibujar Barrios
         for (int i = 0; i < santaMarta.getnBarrios(); i++) {
             Barrio barrio = barrios.get(i);
-            g2.drawImage(barrio.getImagen(), barrio.getX() + centerX, barrio.getY() + centerY, null);
+            g2.drawImage(imagenB, barrio.getX() + centerX, barrio.getY() + centerY, null);
 
             g2.setColor(Color.BLACK);
             g2.drawString(Integer.toString(i + 1), barrio.getX() + centerX, barrio.getY() + centerY);
@@ -103,7 +117,7 @@ public class Dibujar extends JPanel implements ActionListener{
         // Dibujar ambulancia
         for (int i = 0; i < santaMarta.getnAmbulancias(); i++) {
             Ambulancia ambulancia = ambulancias.get(i);
-            g2.drawImage(ambulancia.getImagen(), ambulancia.getX() + centerX, ambulancia.getY() + centerY, null);
+            g2.drawImage(imagenA, ambulancia.getX() + centerX, ambulancia.getY() + centerY, null);
         }
         primeraVez = false;
     }

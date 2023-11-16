@@ -24,7 +24,7 @@ public class Ciudad {
         this.nAmbulancias = nAmbulancias;
         this.nBarrios = nBarrios;
         
-        int radius = 150;
+        int radius = 220;
         for (int i = 0; i < nBarrios; i++) {
             double angle = 2 * Math.PI * i / nBarrios;
             int x = (int) (radius * Math.cos(angle));
@@ -58,6 +58,14 @@ public class Ciudad {
     
     public void agregarDistancia(int vi, int vf, double costo){
         c.insArista(vi ,vf ,costo);
+    }
+    
+    public double obtenerDistancia(int vi, int vf){
+        return c.obtArista(vi, vf);
+    }
+    
+    public double noHayCamino(int vi, int vf){
+        return c.infinito();
     }
     
     //Requerimiento funcionales

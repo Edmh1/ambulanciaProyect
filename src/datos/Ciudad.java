@@ -15,12 +15,12 @@ import java.util.Random;
  */
 public class Ciudad {
     
-    private Grafo<Barrio, Integer> c;
+    private Grafo<Barrio, Double> c;
     private int nBarrios;
     private int nAmbulancias;
 
     public Ciudad(int nBarrios, int nAmbulancias) {
-        this.c = new GrafoEstMat<>(99999);
+        this.c = new GrafoEstMat<>(99999.9);
         this.nAmbulancias = nAmbulancias;
         this.nBarrios = nBarrios;
         
@@ -56,6 +56,10 @@ public class Ciudad {
        return ambulancias;
    }
     
+    public void agregarDistancia(int vi, int vf, double costo){
+        c.insArista(vi ,vf ,costo);
+    }
+    
     //Requerimiento funcionales
     //1
     public void agregarBarrio(Barrio barrio){
@@ -65,8 +69,9 @@ public class Ciudad {
     //2 Nota : n debe ser entre 4 - 5
     public void situarAmbulancias(int n){
         Random random = new Random();
-        boolean asignar = random.nextBoolean();
+        boolean asignar;
         for (int i = 0; i < c.orden(); i++) {
+            asignar = random.nextBoolean();
             if(asignar && n > 0){
                 c.obtVertice(i).asignarAmbulancia(new Ambulancia(c.obtVertice(i).getX(), c.obtVertice(i).getY()));
                 n--;

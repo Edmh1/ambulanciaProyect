@@ -8,7 +8,7 @@ import ednl.Grafo;
 
 /**
  *
- * @author CARLOS
+ * @author edavi
  */
 public class Floyd {
     Grafo<String, Integer> grafo;

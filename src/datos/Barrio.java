@@ -26,7 +26,7 @@ public class Barrio {
         this.x = x;
         this.y = y;
         ImageIcon img = new ImageIcon(this.getClass().getResource(getBarrio()));
-        imagen = img.getImage().getScaledInstance(50, 50, 0);
+        imagen = img.getImage().getScaledInstance(30, 30, 0);
     }
     
     public void asignarAmbulancia(Ambulancia ambulancia){

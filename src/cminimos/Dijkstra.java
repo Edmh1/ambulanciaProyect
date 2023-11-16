@@ -9,7 +9,7 @@ import ednl.Grafo;
 
 /**
  *
- * @author CARLOS
+ * @author edavi
  */
 public class Dijkstra {
     Grafo<String, Integer> grafo;

@@ -12,15 +12,21 @@ import java.io.Serializable;
  * @author edavi
  */
 public class Ambulancia implements Serializable{
+    
+    private boolean estado;
+    private int nCasos;
+    
     private int dx;
     private int dy;
-    
     private int x;
     private int y;
     
     public Ambulancia(int x, int y){
         this.x = x;
         this.y = y;
+        
+        estado = true;
+        nCasos = 0;
     }
     
     public void mover(){

@@ -63,7 +63,7 @@ public class Dibujar extends JPanel implements ActionListener{
         super.paintComponent(grafica);
         Graphics2D g2 = (Graphics2D) grafica;
 
-        int centerX = getWidth() / 2 - 250;
+        int centerX = getWidth() / 2;
         int centerY = getHeight() / 2 - 10;
 
         // Dibujar Barrios
@@ -96,8 +96,10 @@ public class Dibujar extends JPanel implements ActionListener{
         }
         
     }
-
     
+    public Ciudad getCiudad(){
+        return santaMarta;
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {

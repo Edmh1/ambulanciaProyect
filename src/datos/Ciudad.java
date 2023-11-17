@@ -4,11 +4,12 @@
  */
 package datos;
 
+import cminimos.Floyd;
 import ednl.Grafo;
 import ednl.GrafoEstMat;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Queue;
+import java.util.LinkedList;
 import java.util.Random;
 
 /**
@@ -19,13 +20,13 @@ public class Ciudad implements Serializable{
     private Grafo<Barrio, Double> c;
     private int nBarrios;
     private int nAmbulancias;
-    private Queue<Integer> colaPrioridad;
+    private LinkedList<Integer> colaPrioridad;
 
     public Ciudad(int nBarrios, int nAmbulancias) {
         this.c = new GrafoEstMat<>(99999.9);
         this.nAmbulancias = nAmbulancias;
         this.nBarrios = nBarrios;
-        
+        colaPrioridad = new LinkedList<>();
         //coloca los vertices
         int radius = 300;
         for (int i = 0; i < nBarrios; i++) {
@@ -55,6 +56,7 @@ public class Ciudad implements Serializable{
             
         }
         situarAmbulancias(nAmbulancias);
+        asignarEventos(nAmbulancias);
     }
     
     public Barrio obtenerBarrio(int i){
@@ -77,7 +79,7 @@ public class Ciudad implements Serializable{
            }
        }
        return ambulancias;
-   }
+    }
     
     public void agregarDistancia(int vi, int vf, double costo){
         c.insArista(vi ,vf ,costo);
@@ -93,6 +95,17 @@ public class Ciudad implements Serializable{
     
     public void añadirEvento(int pos){
         colaPrioridad.add(pos);
+    }
+    private void asignarEventos(int n){
+        Random random = new Random();
+        boolean asignar;
+        for (int i = nBarrios-1; i >= 0; i--) {
+            asignar = random.nextBoolean();
+            if(asignar && n > 0){
+                colaPrioridad.addLast(i);
+                n--;
+            }
+        }
     }
     
     //Requerimiento funcionales
@@ -114,8 +127,26 @@ public class Ciudad implements Serializable{
         } 
     }
     //3
-    public void atenderAccidente(Barrio barrio){
-        
+    public void atenderAccidente(){
+       Barrio barrio =c.obtVertice(colaPrioridad.removeFirst()); 
+       enviarAmbulancia(barrio);
+    }
+    private void enviarAmbulancia(Barrio barrio){
+        int pos = buscar(barrio);
+        Ambulancia ambulancia = ambulanciaMasCercana(pos);
+        ambulancia.movimiento(barrio);
+    }
+    private Ambulancia ambulanciaMasCercana(int pos){
+        Floyd flo = new Floyd(c);
+        Ambulancia masCercana = null;
+        double menor = c.infinito();
+        for (int i = 0; i < 10; i++) {
+            if(flo.f[i][pos] < menor && c.obtVertice(pos).getAmbulancia()!= null){
+                menor = flo.f[i][pos];
+                masCercana = c.obtVertice(pos).getAmbulancia();
+            }
+        }
+        return masCercana;
     }
     //4
     public int cantidadDeIncidentes(){
@@ -164,13 +195,6 @@ public class Ciudad implements Serializable{
      */
     public int getnAmbulancias() {
         return nAmbulancias;
-    }
-
-    /**
-     * @return the colaPrioridad
-     */
-    public Queue<Integer> getColaPrioridad() {
-        return colaPrioridad;
     }
 
     

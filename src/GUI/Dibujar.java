@@ -72,7 +72,7 @@ public class Dibujar extends JPanel implements ActionListener{
             g2.drawImage(imagenB, barrio.getX() + centerX, barrio.getY() + centerY, null);
 
             g2.setColor(Color.BLACK);
-            g2.drawString(Integer.toString(i + 1), barrio.getX() + centerX, barrio.getY() + centerY);
+            g2.drawString(Integer.toString(i), barrio.getX() + centerX, barrio.getY() + centerY);
 
             
             for (int j = i + 1; j < santaMarta.getnBarrios(); j++) {
@@ -101,19 +101,10 @@ public class Dibujar extends JPanel implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!ambulancias.isEmpty()) {
-            Ambulancia a = ambulancias.get(1);
-            System.out.println(a.getX() + " " + a.getY());
+        
+        repaint();
             
-            Barrio b = barrios.get(9);
-            ambulancias.get(0).mover();
-            System.out.println(b.getX() + " posicion" + b.getY());
-            a.movimiento(b);
-//           }
-            System.out.println("destino");
-            repaint();
-            
-        }
+        
     }
     private class Teclado extends KeyAdapter {
         @Override

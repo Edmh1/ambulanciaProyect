@@ -16,12 +16,7 @@ import persistencia.Serializar;
  */
 public class test {
     
-    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException{
+    public static void main(String[] args) {
         
-        Serializar persi = new Serializar();
-        if(new File("ciudad.data").exists()){
-            Ciudad recuperar = persi.toGet();
-            System.out.println(" " + recuperar.getnBarrios());
-        }
     }
 }

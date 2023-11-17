@@ -70,6 +70,7 @@ public class Ciudad implements Serializable{
         }
         return barrios;
     }
+    
     public ArrayList<Ambulancia> obtenerAmbulancias() {
        ArrayList<Ambulancia> ambulancias = new ArrayList<>();
        for (int i = 0; i < c.orden(); i++) {
@@ -96,6 +97,7 @@ public class Ciudad implements Serializable{
     public void añadirEvento(int pos){
         colaPrioridad.add(pos);
     }
+    
     private void asignarEventos(int n){
         Random random = new Random();
         boolean asignar;
@@ -131,11 +133,13 @@ public class Ciudad implements Serializable{
        Barrio barrio =c.obtVertice(colaPrioridad.removeFirst()); 
        enviarAmbulancia(barrio);
     }
+    
     private void enviarAmbulancia(Barrio barrio){
         int pos = buscar(barrio);
         Ambulancia ambulancia = ambulanciaMasCercana(pos);
         ambulancia.movimiento(barrio);
     }
+    
     private Ambulancia ambulanciaMasCercana(int pos){
         Floyd flo = new Floyd(c);
         Ambulancia masCercana = null;
@@ -149,13 +153,19 @@ public class Ciudad implements Serializable{
         return masCercana;
     }
     //4
-    public int cantidadDeIncidentes(){
+    public String cantidadDeIncidentesTotales(){
         int incidentes = 0;
         for (int i = 0; i < c.orden(); i++) {
             incidentes+= c.obtVertice(i).getnAccidentes();
         }
-        return incidentes;
+        return "La cantidad de accidente que hubo en santamarta fue: " + incidentes + "\n";
     }
+    
+    public String cantidadDeIncidentesBarrio(int pos){
+        Barrio b = c.obtVertice(pos);
+        return "La cantidad de accidentes que hubo en el barrio pos fue: " + b.getnAccidentes() + "\n";
+    }
+    
     //5
     public String posiblesRutasAmbulancia(){
         return "";
@@ -170,6 +180,7 @@ public class Ciudad implements Serializable{
             }
         }
     }
+    
     private int buscar(Barrio barrio){
         for (int i = 0; i < c.orden(); i++) {
             if(c.obtVertice(i).equals(barrio)){

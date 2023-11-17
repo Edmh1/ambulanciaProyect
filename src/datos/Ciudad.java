@@ -70,6 +70,7 @@ public class Ciudad implements Serializable{
         }
         return barrios;
     }
+    
     public ArrayList<Ambulancia> obtenerAmbulancias() {
        ArrayList<Ambulancia> ambulancias = new ArrayList<>();
        for (int i = 0; i < c.orden(); i++) {
@@ -96,6 +97,7 @@ public class Ciudad implements Serializable{
     public void añadirEvento(int pos){
         colaPrioridad.add(pos);
     }
+    
     private void asignarEventos(int n){
         Random random = new Random();
         boolean asignar;
@@ -131,11 +133,13 @@ public class Ciudad implements Serializable{
        Barrio barrio =c.obtVertice(colaPrioridad.removeFirst()); 
        enviarAmbulancia(barrio);
     }
+    
     private void enviarAmbulancia(Barrio barrio){
         int pos = buscar(barrio);
         Ambulancia ambulancia = ambulanciaMasCercana(pos);
         ambulancia.movimiento(barrio);
     }
+    
     private Ambulancia ambulanciaMasCercana(int pos){
         Floyd flo = new Floyd(c);
         Ambulancia masCercana = null;

@@ -33,6 +33,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -78,6 +79,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setMaximumSize(new java.awt.Dimension(50, 30));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -86,20 +89,24 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jButton1))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
+                            .addComponent(jButton1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jButton4)))
-                .addContainerGap(181, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addComponent(jButton1)
-                .addGap(65, 65, 65)
+                .addGap(49, 49, 49)
                 .addComponent(jButton4)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,7 +150,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_atenderAccidente
 
     private void nAccidentes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nAccidentes
-        dibujar1.getCiudad().cantidadDeIncidentes();
+        String mensaje = dibujar1.getCiudad().cantidadDeIncidentesTotales();
+        jLabel1.setText(mensaje);
     }//GEN-LAST:event_nAccidentes
 
     /**
@@ -186,6 +194,7 @@ public class Main extends javax.swing.JFrame {
     private GUI.Dibujar dibujar1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

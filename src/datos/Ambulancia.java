@@ -5,19 +5,16 @@
 package datos;
 
 import java.awt.event.KeyEvent;
-import java.io.Serializable;
 
 /**
  *
  * @author edavi
  */
-public class Ambulancia implements Serializable{
+public class Ambulancia {
     
     private boolean estado;
     private int nCasos;
     
-    private int dx;
-    private int dy;
     private int x;
     private int y;
     
@@ -29,11 +26,6 @@ public class Ambulancia implements Serializable{
         nCasos = 0;
     }
     
-    public void mover(){
-        x += dx;
-        y += dy;
-    }
-    
     public void movimiento(Barrio vf){
         //Barrio vi = g.obtVertice(vInicio);
         //Barrio //vf = g.obtVertivFinal;
@@ -43,54 +35,21 @@ public class Ambulancia implements Serializable{
         
         if(getX() < x){
             this.x++;
-            //dx = 1;
+           
+           
         }else if(getX() > x){
             this.x--;
-            //dx = -1;
+           
         }
         if(getY() < y){
             this.y++;
-            //dy = 1;
+         
         }else
             if(getX() > y){
             this.y--;
-            //dy = -1;
+          
         }
         
-    }
-    
-    public void keyReleased(KeyEvent e){
-        int key = e.getKeyCode();
-
-        if(key == KeyEvent.VK_LEFT){
-            dx = 0;
-        }
-        if(key == KeyEvent.VK_RIGHT){
-            dx = 0;
-        }
-        if(key == KeyEvent.VK_UP){
-            dy = 0;
-        }
-        if(key == KeyEvent.VK_DOWN){
-            dy = 0;
-        }
-    }
-
-    public void keyPressed(KeyEvent e){
-        int key = e.getKeyCode();
-
-        if(key == KeyEvent.VK_LEFT){
-            dx = -3;
-        }
-        if(key == KeyEvent.VK_RIGHT){
-            dx = 3;
-        }
-        if(key == KeyEvent.VK_UP){
-            dy = -3;
-        }
-        if(key == KeyEvent.VK_DOWN){
-            dy = 3;
-        }
     }
 
      /**

@@ -15,8 +15,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -36,6 +34,8 @@ public class Dibujar extends JPanel implements ActionListener{
     private String barrio = "../GUI/Barrio.jpg";
     private Image imagenB;
     
+    private Ambulancia ambMover;
+    
     public Dibujar() {
         setBackground(Color.WHITE);
         setFocusable(true);
@@ -54,7 +54,6 @@ public class Dibujar extends JPanel implements ActionListener{
         timer = new Timer(15, this);
         timer.start();
         
-        addKeyListener(new Teclado());  // Asigna el KeyListener al panel
         setFocusable(true);
     }
 
@@ -101,23 +100,28 @@ public class Dibujar extends JPanel implements ActionListener{
         return santaMarta;
     }
     
+    public void moverAmbulancia(Ambulancia a, Barrio b){
+        a.movimiento(b);
+    }
+    
+    public int atenderAccidente(){
+        int pos = (int) (Math.random()*santaMarta.getnBarrios());
+        Barrio barrio =santaMarta.obtenerBarrio(pos); 
+        enviarAmbulancia(barrio);
+        santaMarta.nAccidentes+=1;
+        return pos;
+    }
+    
+    private void enviarAmbulancia(Barrio barrio){
+        int pos = santaMarta.buscar(barrio);
+        Ambulancia ambulancia = santaMarta.ambulanciaMasCercana(pos);
+        ambulancia.movimiento(barrio);
+        repaint();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        
         repaint();
-            
-        
-    }
-    private class Teclado extends KeyAdapter {
-        @Override
-        public void keyReleased(KeyEvent e) {
-            ambulancias.get(0).keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            ambulancias.get(0).keyPressed(e);
-        }
     }
 
     

@@ -5,10 +5,6 @@
 package testing;
 
 import datos.Ciudad;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import persistencia.Serializar;
 
 /**
  *
@@ -17,6 +13,8 @@ import persistencia.Serializar;
 public class test {
     
     public static void main(String[] args) {
-        
+        Ciudad sanCiudad = new Ciudad(20, 5);
+        System.out.println(""+sanCiudad.obtenerDistancia(5, 1));
+        System.out.println(""+ sanCiudad.ambulanciaMasCercana(5));
     }
 }

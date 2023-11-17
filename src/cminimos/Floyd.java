@@ -28,7 +28,7 @@ public class Floyd {
         r=new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                f[i][j]=(double) grafo.obtArista(i, j);
+                f[i][j]= grafo.obtArista(i, j);
                 r[i][j]=-1; // ruta que guarda las k
             }
         }

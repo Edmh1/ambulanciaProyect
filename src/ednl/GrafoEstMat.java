@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author ESTUDIANTE
  */
-public class GrafoEstMat<V,A> implements Grafo<V, A>, Serializable{
+public class GrafoEstMat<V,A> implements Grafo<V, A>{
     private ArrayList<V> vertices;
     private Object aristas[][];
     private A inf;

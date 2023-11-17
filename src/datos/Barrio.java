@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author edavi
  */
-public class Barrio implements Serializable{
+public class Barrio {
     private String nombre;
     private Ambulancia ambulancia;
     private int nAccidentes;
